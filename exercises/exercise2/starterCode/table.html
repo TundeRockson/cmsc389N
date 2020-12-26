@@ -1,0 +1,53 @@
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Exercise 2: Number Tables</title>
+  </head>
+
+  <body>
+    <script>
+      "use strict";
+      let sum = 0;
+      let maxCount = 0;
+      let count = 1;
+      let valueArray = [];
+      let value;
+      let tableCount = 1;
+
+
+
+      do {
+        value = prompt("Enter a value");
+        if (!(isNaN(Number(value))) && (Number(value) > 0)) {
+          valueArray.push(Math.round(value));
+          maxCount = maxCount + 1;
+          sum = sum + Math.round(Number(value));
+        }
+      } while (value !== "done");
+
+      document.writeln("<table border=\"10\">");
+      document.writeln("<caption><strong>Fibonacci Table</strong></caption>");
+      document.writeln("<tr><th>Count</th><th>Value</th><th>Fibonacci Value</th></tr>");
+
+      while (count <= maxCount) {
+        document.writeln("<tr><td>" + count + "</td><td>" +
+          valueArray[count - 1] + "</td><td>" + fibonacci(valueArray[count - 1]) + "</td></tr>");
+        count = count + 1;
+      }
+
+      function fibonacci(num) {
+        if (num <= 1) {
+          return num;
+        } else {
+          return fibonacci(num - 1) + fibonacci(num - 2);
+        }
+      }
+      document.writeln("<tr><td>the sum of all values entered</td><td>" +
+        sum + "</td></tr>");
+      document.writeln("</table>");
+    </script>
+  </body>
+
+  </html>

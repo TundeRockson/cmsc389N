@@ -1,0 +1,102 @@
+/*********************TAG SELECTORS***************************/
+body {
+  background-image: url("ezgif-6-f134edc657cd.gif");
+  display: inline
+}
+div {
+  background-color: rgba(122, 151, 3, 1);
+  border-style: dotted solid double;
+  margin: 1%;
+  display: inline-block;
+}
+
+td img { /*DESCENDANT SELECTOR*/
+  border: 1px solid pink;
+  border-radius: 50%;
+  border-width: thick;
+}
+
+h1 {
+  font-size: 4em;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color: purple;
+}
+h3 {
+  font-size: 2em;
+  font-family: sans-serif;
+  color: lightblue;
+}
+
+p {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+ span {
+  font-size: 2.1em;
+  color: red;
+ }
+
+ li {
+   font-family:  "Comic Sans MS", "Comic Sans", cursive;
+ }
+
+ footer {
+   background-color: rgba(122, 151, 3, 1);
+   border-style: dotted solid double;
+   margin: 1%;
+   text-align: center;
+ }
+
+
+/*********************ID SELECTORS***************************/
+#introduction {
+  padding-left: 10%;
+  padding-right: 10%;
+
+}
+#section {
+  padding: 0 5% 0;
+  background-color: inherit;
+  border-style: none;
+  text-align: center;
+}
+
+
+
+/*********************CLASS SELECTORS***************************/
+.travel {
+  padding: 1% ;
+}
+.hobbies {
+  padding-bottom: 4%;
+  padding-left: 7%;
+  padding-right:7%;
+  padding-top: 1%;
+}
+
+.quotes {
+  text-align: center;
+  padding: 1%;
+}
+
+.quote {
+  text-align: center;
+  font-size: 2em;
+  text-shadow:2px 2px #ff0000;
+}
+
+.vietnam:hover {
+  color: red;
+}
+
+.burkina:hover {
+  color: purple;
+}
+
+.nigeria:hover {
+  color: green;
+}
+
+.usa:hover {
+  color: white;
+}

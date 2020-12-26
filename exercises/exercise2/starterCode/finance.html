@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Exercise 2: Finance</title>
+</head>
+
+<body>
+  <script>
+    "use strict";
+    let input;
+    let correctArray = [1, 2];
+    while (!correctArray.includes(input)) {
+      input = Number(prompt("Enter 1 (Loan payment calculator) or 2 (budgeting function)"));
+    }
+
+    if (input === 1) { //Loan payment calculator
+      loan();
+    } else { //Budgeting
+      budget();
+    }
+
+    function loan() {
+      let amount = Number(prompt("Enter Loan Amount"));
+      let length = Number(prompt("Enter Loan Length (in months)"));
+      let percent = Number(prompt("Enter your Annual Percentage Rate (APR)")) / 100;
+      if (amount < 0 || length < 0 || percent < 0) {
+        alert("Input is invalid. Try again.");
+        loan();
+      } else if (isNaN(amount) || isNaN(length) || isNaN(percent)) {
+        alert("Input is invalid. Try again.");
+        loan();
+      } else {
+        let interest = (percent / 12) * amount;
+        let total = amount + (interest * (length));
+        let monthlyPayment = total / length;
+        let totalInterest = (percent*amount)*(length/12);
+
+        document.writeln("<h1>" + new Intl.NumberFormat().format(amount) + " on a " + percent*100 +"% APR for "+ length +" months</h1>");
+        document.writeln("<h2>Loan Total: </h2>");
+        document.writeln("<p>$" + new Intl.NumberFormat().format(total) + "</p>");
+        document.writeln("<h2>Amount of Interest for this year: </h2>");
+        document.writeln("<p>$" + new Intl.NumberFormat().format(percent*amount) + "</p>");
+        document.writeln("<h2> Total Interest Amount: </h2>");
+        document.writeln("<p>$" + new Intl.NumberFormat().format(totalInterest) + "</p>");
+        document.writeln("<h2>Monthly Payment Amount: </h2>");
+        document.writeln("<p>$" + new Intl.NumberFormat().format(monthlyPayment.toFixed(2)) + "</p>");
+      }
+    }
+
+    function budget() {
+      let billInput;
+      let labelInput;
+      let expenses;
+      let savings;
+      let count = 1;
+      let billArray = [];
+      let labelArray = [];
+      let tableCount = 1;
+      let net;
+      const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+      })
+
+
+      while (billInput !== -999) {
+        billInput = Number(prompt("Enter Bill #" + count));
+        if (billInput === -999) {
+          break;
+        }
+        labelInput = prompt("What is Bill #" + count + " for?");
+        billArray.push(billInput);
+        labelArray.push(labelInput);
+        count = count + 1;
+      }
+      let income = Number(prompt("Enter your income"));
+
+      document.writeln("<table border=\"10\">");
+      document.writeln("<caption><strong>Budgeting</strong></caption>");
+      document.writeln("<tr><th>Count</th><th>Item</th><th>Price</th></tr>");
+
+      while (tableCount < count) {
+        document.writeln("<tr><td>" + tableCount + "</td><td>" +
+          labelArray[tableCount - 1] + "</td><td>$" +
+          new Intl.NumberFormat().format(billArray[tableCount - 1]) + "</td></tr>");
+        tableCount = tableCount + 1;
+      }
+      expenses = billArray.reduce((a, b) => a + b, 0);
+      savings = income * .1;
+      net = income - expenses - savings;
+
+      document.writeln("<tr><td>Total Income</td><td>" + formatter.format(income) + "</td></tr>");
+      document.writeln("<tr><td>Savings</td><td>" + formatter.format(savings) + "</td></tr>");
+      document.writeln("<tr><td>Total Expenses</td><td>" + formatter.format(expenses) + "</td></tr>");
+      document.writeln("<tr><td>Net Income (-Savings)</td><td>" + formatter.format(net) + "</td></tr>");
+
+      if (net > 0) {
+        alert("You are under budget. Keep it up!");
+      } else if (net < 0) {
+        alert("You are over budget. Do better");
+      } else {
+        alert("You are right on budget!");
+      }
+    }
+  </script>
+</body>
+
+</html>
